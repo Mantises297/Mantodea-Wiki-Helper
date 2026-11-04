@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mantodea Wiki Text Generator</title>
+</head>
+<body>
+
+    <h1>Mantodea Wiki Image Info Generator</h1>
+
+    <p><label>Subject Description (e.g., Adult female Euchomenella sp.):<br>
+    <input type="text" id="subject" size="50"></label></p>
+
+    <p><label>iNaturalist Observation Link:<br>
+    <input type="text" id="obsLink" size="50"></label></p>
+
+    <p><label>iNaturalist User Link:<br>
+    <input type="text" id="userLink" size="50"></label></p>
+
+    <p><label>Username (e.g., berniedup):<br>
+    <input type="text" id="username" size="50"></label></p>
+
+    <p><label>User Full Name (e.g., Bernard DUPONT):<br>
+    <input type="text" id="fullName" size="50"></label></p>
+
+    <p><label>License (e.g., CC-BY):<br>
+    <input type="text" id="license" size="50"></label></p>
+
+    <button onclick="generateText()">Generate Markup</button>
+
+    <hr>
+
+    <h3>Image Description Output:</h3>
+    <textarea id="descOutput" rows="6" cols="70" readonly></textarea>
+
+    <h3>Caption Output:</h3>
+    <textarea id="captionOutput" rows="3" cols="70" readonly></textarea>
+
+    <script>
+        function generateText() {
+            const subject = document.getElementById('subject').value;
+            const obsLink = document.getElementById('obsLink').value;
+            const userLink = document.getElementById('userLink').value;
+            const username = document.getElementById('username').value;
+            const fullName = document.getElementById('fullName').value;
+            const license = document.getElementById('license').value;
+
+            // Generate Description
+            const description = `${subject}, taken by [${userLink} ${fullName}] (iNaturalist user [${userLink} ${username}]) - [${obsLink} iNaturalist]\n\n(c) ${fullName}, some rights reserved (${license})`;
+
+            // Generate Caption
+            const caption = `(taken by [${userLink} ${fullName}] on [${obsLink} iNaturalist])`;
+
+            // Display in textareas
+            document.getElementById('descOutput').value = description;
+            document.getElementById('captionOutput').value = caption;
+        }
+    </script>
+
+</body>
+</html>
