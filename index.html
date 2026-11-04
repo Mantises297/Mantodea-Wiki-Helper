@@ -31,10 +31,12 @@
     <hr>
 
     <h3>Image Description Output:</h3>
-    <textarea id="descOutput" rows="6" cols="70" readonly></textarea>
+    <textarea id="descOutput" rows="6" cols="70" readonly></textarea><br>
+    <button onclick="copyDesc()">Copy Description</button>
 
     <h3>Caption Output:</h3>
-    <textarea id="captionOutput" rows="3" cols="70" readonly></textarea>
+    <textarea id="captionOutput" rows="3" cols="70" readonly></textarea><br>
+    <button onclick="copyCaption()">Copy Caption</button>
 
     <script>
         function generateText() {
@@ -45,15 +47,25 @@
             const fullName = document.getElementById('fullName').value;
             const license = document.getElementById('license').value;
 
-            // Generate Description (uses whatever you paste in the license box as the second line)
             const description = `${subject}, taken by [${userLink} ${fullName}] (iNaturalist user [${userLink} ${username}]) - [${obsLink} iNaturalist]\n\n${license}`;
-
-            // Generate Caption
             const caption = `(taken by [${userLink} ${fullName}] on [${obsLink} iNaturalist])`;
 
-            // Display in textareas
             document.getElementById('descOutput').value = description;
             document.getElementById('captionOutput').value = caption;
+        }
+
+        function copyDesc() {
+            const descText = document.getElementById('descOutput');
+            descText.select();
+            document.execCommand('copy');
+            alert('Description copied to clipboard!');
+        }
+
+        function copyCaption() {
+            const captionText = document.getElementById('captionOutput');
+            captionText.select();
+            document.execCommand('copy');
+            alert('Caption copied to clipboard!');
         }
     </script>
 
