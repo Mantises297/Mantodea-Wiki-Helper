@@ -8,7 +8,7 @@
 
     <h1>Mantodea Wiki Image Info Generator</h1>
 
-    <p><label>Subject Description (e.g., Adult female Euchomenella sp.):<br>
+    <p><label>Subject Description:<br>
     <input type="text" id="subject" size="50"></label></p>
 
     <p><label>iNaturalist Observation Link:<br>
@@ -17,13 +17,13 @@
     <p><label>iNaturalist User Link:<br>
     <input type="text" id="userLink" size="50"></label></p>
 
-    <p><label>Username (e.g., berniedup):<br>
+    <p><label>Username:<br>
     <input type="text" id="username" size="50"></label></p>
 
-    <p><label>User Full Name (e.g., Bernard DUPONT):<br>
+    <p><label>User Full Name:<br>
     <input type="text" id="fullName" size="50"></label></p>
 
-    <p><label>License (e.g., CC-BY):<br>
+    <p><label>License:<br>
     <input type="text" id="license" size="50"></label></p>
 
     <button onclick="generateText()">Generate Markup</button>
@@ -45,7 +45,7 @@
             const fullName = document.getElementById('fullName').value;
             const license = document.getElementById('license').value;
 
-            // Generate Description
+            // Generate Description (properly formatting license only once)
             const description = `${subject}, taken by [${userLink} ${fullName}] (iNaturalist user [${userLink} ${username}]) - [${obsLink} iNaturalist]\n\n(c) ${fullName}, some rights reserved (${license})`;
 
             // Generate Caption
