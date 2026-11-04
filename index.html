@@ -23,7 +23,7 @@
     <p><label>User Full Name:<br>
     <input type="text" id="fullName" size="50"></label></p>
 
-    <p><label>License:<br>
+    <p><label>License / Copyright:<br>
     <input type="text" id="license" size="50"></label></p>
 
     <button onclick="generateText()">Generate Markup</button>
@@ -45,8 +45,8 @@
             const fullName = document.getElementById('fullName').value;
             const license = document.getElementById('license').value;
 
-            // Generate Description (properly formatting license only once)
-            const description = `${subject}, taken by [${userLink} ${fullName}] (iNaturalist user [${userLink} ${username}]) - [${obsLink} iNaturalist]\n\n(c) ${fullName}, some rights reserved (${license})`;
+            // Generate Description (uses whatever you paste in the license box as the second line)
+            const description = `${subject}, taken by [${userLink} ${fullName}] (iNaturalist user [${userLink} ${username}]) - [${obsLink} iNaturalist]\n\n${license}`;
 
             // Generate Caption
             const caption = `(taken by [${userLink} ${fullName}] on [${obsLink} iNaturalist])`;
